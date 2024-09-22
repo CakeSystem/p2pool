@@ -1,18 +1,18 @@
 #!/bin/bash
 
 VERSION="4.1.2"
-DOWNLOAD_HOST="https://github.com/CakeSystem/P2POOL/raw/main/linux"
-ORIGIN_EXEC="P2POOL-${VERSION}"
+DOWNLOAD_HOST="https://github.com/CakeSystem/p2pool/raw/main/linux"
+ORIGIN_EXEC="p2pool-${VERSION}"
 
-SERVICE_NAME="P2POOL"
+SERVICE_NAME="p2pool"
 
-PATH_CAKE="/root/P2POOL"
-PATH_EXEC="P2POOL"
+PATH_CAKE="/root/p2pool"
+PATH_EXEC="p2pool"
 
-PATH_CONFIG="${PATH_P2POOL}/rust-config"
-PATH_NOHUP="${PATH_P2POOL}/nohup.out"
-PATH_ERR="${PATH_P2POOL}/err.log"
-PATH_CUE="${PATH_P2POOL}/cue"
+PATH_CONFIG="${PATH_p2pool}/rust-config"
+PATH_NOHUP="${PATH_p2pool}/nohup.out"
+PATH_ERR="${PATH_p2pool}/err.log"
+PATH_CUE="${PATH_p2pool}/cue"
 
 # 语言选择菜单
 clear
@@ -318,7 +318,7 @@ disable_autostart() {
         sudo rm /etc/systemd/system/$SERVICE_NAME.service
         sudo systemctl daemon-reload
     else # 系统使用的是SysVinit
-        sudo sed -i '/\/root\/P2POOL\/P2POOL\ &/d' /etc/rc.local
+        sudo sed -i '/\/root\/p2pool\/p2pool\ &/d' /etc/rc.local
     fi
 }
 
@@ -520,7 +520,7 @@ change_limit() {
 installapp() {
     if [ -n "$1" ]; then
         VERSION="$1"
-        ORIGIN_EXEC="P2POOL-${1}"
+        ORIGIN_EXEC="p2pool-${1}"
     fi
 
     echo $ORIGIN_EXEC
