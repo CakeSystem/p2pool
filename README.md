@@ -10,7 +10,7 @@
 
 <img src="./image/logo.png" alt="Logo" width="170">
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=F76322&center=true&vCenter=true&width=435&lines=CakeMinerSystem)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=F76322&center=true&vCenter=true&width=435&lines=p2pool)](https://git.io/typing-svg)
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&duration=3000&pause=1000&center=true&vCenter=true&width=435&lines=%E5%9F%BA%E4%BA%8ECake%E6%89%93%E9%80%A0%E5%9C%B0%E8%A1%A8%E6%9C%80%E5%BC%BA%E7%9A%84MinerProxy)](https://git.io/typing-svg)
 
 
@@ -41,11 +41,11 @@
 [![CakeSystem][CakeSystem.io-badge]][CakeSystem.io]
 [![Stargazers][stars-shield]][stars-url]
 
-<!-- <a href="https://github.com/CakeSystem/CakeSystem">简体中文</a>｜<a href="https://github.com/CakeSystem/CakeSystem/tree/main/Readme/i18n">English</a> -->
+<!-- <a href="https://github.com/CakeSystem/p2pool">简体中文</a>｜<a href="https://github.com/CakeSystem/p2pool/tree/main/Readme/i18n">English</a> -->
 
 </div>
 
-# CakeMinerSystem
+# P2POOL
 
 <table>
    <tr>
@@ -58,7 +58,7 @@
    <p>&emsp;&emsp;运行以下shell指令以运行工具包</p>
 
    ```sh
-bash <(curl -s -L https://raw.githubusercontent.com/CakeSystem/CakeSystem/main/install.sh)
+bash <(curl -s -L https://raw.githubusercontent.com/CakeSystem/p2pool/main/install.sh)
    ```
    
    <p>&emsp;&emsp;成功运行后，您将看到以下菜单, 根据提示安装即可。</p>
@@ -77,7 +77,7 @@ bash <(curl -s -L https://raw.githubusercontent.com/CakeSystem/CakeSystem/main/i
    <p>&emsp;&emsp;请直接从此项目的Windows目录下载指定的版本：</p>
 
    ```sh
-https://github.com/CakeSystem/CakeSystem/tree/main/windows
+https://github.com/CakeSystem/p2pool/tree/main/windows
    ```
 
    <p>&emsp;&emsp;Windows版本直接双击启动即可。</p>
@@ -161,7 +161,7 @@ https://github.com/CakeSystem/CakeSystem/tree/main/windows
 
 ### 👉 **加入聊天组**
 
-<p>&emsp;&emsp;Telegram：<a href="https://t.me/CakeSystem">https://t.me/CakeSystem</a></p>
+<p>&emsp;&emsp;Telegram：<a href="https://t.me/www_p2pool_xyz">https://t.me/www_p2pool_xyz</a></p>
 
 <!-- <p>&emsp;&emsp;Discord: <a href="https://discord.gg/xpjRnv8wpX">https://discord.gg/xpjRnv8wpX</a></p> -->
 
@@ -187,7 +187,7 @@ https://github.com/CakeSystem/CakeSystem/tree/main/windows
 
 ### 👉 **服务协议**
 
-   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CakeMinerSystem受香港法律监管。请注意，不同国家/地区的法律要求可能会限制此类产品和服务。因此，该产品和服务以及某些功能可能不可用，或者在某些司法管辖区或地区或某些用户中可能受到限制。您应该理解并遵守当地的法律法规。如果您使用此产品，默认代表将接受上述许可证。如果本产品引起的法律问题与本产品无关。</p>
+   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P2POOL受香港法律监管。请注意，不同国家/地区的法律要求可能会限制此类产品和服务。因此，该产品和服务以及某些功能可能不可用，或者在某些司法管辖区或地区或某些用户中可能受到限制。您应该理解并遵守当地的法律法规。如果您使用此产品，默认代表将接受上述许可证。如果本产品引起的法律问题与本产品无关。</p>
 
    </td>
    </tr>
@@ -210,10 +210,10 @@ https://github.com/CakeSystem/CakeSystem/tree/main/windows
 
 
 
-[CakeSystem.io]: https://github.com/CakeSystem/CakeSystem
-[CakeSystem.io-badge]: https://img.shields.io/badge/CakeSystem-v3.6.0-green?logo=Cake
+[CakeSystem.io]: https://github.com/CakeSystem/p2pool
+[CakeSystem.io-badge]: https://img.shields.io/badge/p2pool-v4.1.2-green?logo=Cake
 [downloads-badge]: https://img.shields.io/github/downloads/ajeetdsouza/zoxide/total?logo=github&logoColor=white&style=flat-square
-[releases]: https://github.com/CakeSystem/CakeSystem/releases
-[stars-url]: https://github.com/CakeSystem/CakeSystem/stargazers
-[stars-shield]: https://img.shields.io/github/stars/CakeSystem/CakeSystem.svg?style=flat
-[stars-url]: https://github.com/CakeSystem/CakeSystem/stargazers
+[releases]: https://github.com/CakeSystem/p2pool/releases
+[stars-url]: https://github.com/CakeSystem/p2pool/stargazers
+[stars-shield]: https://img.shields.io/github/stars/CakeSystem/p2pool.svg?style=flat
+[stars-url]: https://github.com/CakeSystem/p2pool/stargazers
