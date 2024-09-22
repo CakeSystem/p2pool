@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VERSION="4.1.2"
-DOWNLOAD_HOST="https://raw.githubusercontent.com/CakeSystem/p2pool/main/linux"
+DOWNLOAD_HOST="https://github.com/CakeSystem/p2pool/raw/main/linux"
 ORIGIN_EXEC="p2pool-${VERSION}"
 
 SERVICE_NAME="p2pool"
