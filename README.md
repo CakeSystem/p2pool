@@ -11,7 +11,7 @@
 <img src="./image/logo.png" alt="Logo" width="170">
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=F76322&center=true&vCenter=true&width=435&lines=P2POOL)](https://git.io/typing-svg)
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=%E5%9C%B0%E8%A1%A8%E6%9C%80%E5%BC%BAP2POOL%E5%88%86%E5%B8%83%E5%BC%8F%E7%9F%BF%E6%B1%A0)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=%E5%9F%BA%E4%BA%8ERUST%E8%AF%AD%E8%A8%80%E6%89%93%E9%80%A0%E5%9C%B0%E8%A1%A8%E6%9C%80%E5%BC%BA%E5%88%86%E5%B8%83%E5%BC%8F%E7%9F%BF%E6%B1%A0%EF%BC%81)](https://git.io/typing-svg)
 
 
 
