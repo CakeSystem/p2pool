@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="4.4.1"
+VERSION="4.4.2"
 DOWNLOAD_HOST="https://github.com/CakeSystem/p2pool/raw/main/linux"
 ORIGIN_EXEC="p2pool-${VERSION}"
 
@@ -395,6 +395,7 @@ ISSUE() {
 	echo "4.3.4"
 	echo "4.4.0"
 	echo "4.4.1"
+	echo "4.4.2"
 }
 
 filterResult() {
