@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="4.5.0"
+VERSION="4.5.1"
 DOWNLOAD_HOST="https://github.com/CakeSystem/p2pool/raw/main/linux"
 ORIGIN_EXEC="p2pool-${VERSION}"
 
@@ -9,10 +9,21 @@ SERVICE_NAME="p2pool"
 PATH_CAKE="/root/p2pool"
 PATH_EXEC="p2pool"
 
-PATH_CONFIG="${PATH_p2pool}/rust-config"
-PATH_NOHUP="${PATH_p2pool}/nohup.out"
-PATH_ERR="${PATH_p2pool}/err.log"
-PATH_CUE="${PATH_p2pool}/cue"
+PATH_CONFIG="${PATH_CAKE}/rust-config"
+PATH_NOHUP="${PATH_CAKE}/nohup.out"
+PATH_ERR="${PATH_CAKE}/err.log"
+PATH_CUE="${PATH_CAKE}/cue"
+PATH_D_1="${PATH_CAKE}/0.d1"
+PATH_D_2="${PATH_CAKE}/0.d1-shm"
+PATH_D_3="${PATH_CAKE}/0.d1-wal"
+
+RED="\033[31m"
+GREEN="\033[32m"
+YELLOW="\033[33m"
+BLUE="\033[34m"
+BOLD="\033[1m"
+RESET="\033[0m"
+
 
 # 语言选择菜单
 clear
@@ -20,6 +31,7 @@ echo "Please select your language / 请选择语言:"
 # echo ""
 echo "1. English"
 echo "2. 中文"
+echo "官网 https://www.p2pool.xyz/"
 # echo ""
 read -p "$(echo -e "[1-2]：")" lang_choice
 
@@ -49,7 +61,7 @@ if [ "$lang_choice" = "1" ]; then
     m_4="Start program"
     m_5="Program is already running, please do not start it again."
     m_6="Program started successfully, WEB access port is"
-    m_7="Default account is qzpm19kkx, default password is xloqslz913."
+    m_7="Default account is qzpm19kkx default password is xloqslz913"
     m_8="If you are using the default password and port, please change the account password and web access port in a timely manner through the web settings."
     m_9="Password reset completed, changed to default account password qzpm19kkx xloqslz913"
     m_10="Terminating process..."
@@ -85,7 +97,8 @@ if [ "$lang_choice" = "1" ]; then
     m_40="Program startup failure!!!"
 
 elif [ "$lang_choice" = "2" ]; then
-    prompt_title="---------- 中文菜单 ----------"
+    #prompt_title="---------- 中文菜单 ----------"
+	prompt_title="---------- 官网 https://www.p2pool.xyz/ ----------"
     prompt_install="1. 安装"
     prompt_update="2. 更新"
     prompt_start="3. 启动软件"
@@ -110,7 +123,7 @@ elif [ "$lang_choice" = "2" ]; then
     m_4="启动程序"
     m_5="程序已经启动，请不要重复启动。"
     m_6="程序启动成功, WEB访问端口"
-    m_7="默认账号 qzpm19kkx, 默认密码 xloqslz913。"
+    m_7="默认账号 qzpm19kkx 默认密码 xloqslz913"
     m_8="如果您是默认密码及默认端口, 请及时在网页设置中修改账号密码及web访问端口。"
     m_9="重置密码完成, 已修改为默认账号密码 qzpm19kkx xloqslz913"
     m_10="终止进程..."
@@ -170,6 +183,7 @@ echo "$prompt_web_port"
 echo "$prompt_uninstall"
 echo "$prompt_reset_pwd"
 echo "$prompt_target_version"
+echo "17. 设置后台https访问"
 
 update() {
     stop
@@ -206,18 +220,52 @@ set_port() {
     start
 }
 
+set_https_admin() {
+    stop
+
+    start
+}
+
+set_https() {
+    echo "是否开启https后台访问? 请注意,开启后后台地址必须使用https://访问, 关闭后必须使用http://访问。"
+    echo "1. 不开启"
+    echo "2. 开启"
+
+    read -p "$(echo -e "请选择[1-2]?：")" choose
+
+    case $choose in
+    1)
+        setConfig ENABLE_WEB_TLS 0
+        ;;
+    2)
+        setConfig ENABLE_WEB_TLS 1
+        return
+        ;;
+    *)
+        setConfig ENABLE_WEB_TLS 1
+        echo "输入错误, 默认不开启。"
+        return
+        ;;
+    esac
+}
+
+get_ip(){
+    local IP=$( ip addr | egrep -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | egrep -v "^192\.168|^172\.1[6-9]\.|^172\.2[0-9]\.|^172\.3[0-2]\.|^10\.|^127\.|^255\.|^0\." | head -n 1 )
+    [ -z ${IP} ] && IP=$( wget -qO- -t1 -T2 ipv4.icanhazip.com )
+    [ -z ${IP} ] && IP=$( wget -qO- -t1 -T2 ipinfo.io/ip )
+    [ ! -z ${IP} ] && echo ${IP} || echo
+}
+
 start() {
-    echo $BLUE "${m_4}..."
+    # set_https
+
+    echo "${m_4}..."
     check_process $PATH_EXEC
 
     if [ $? -eq 0 ]; then
         echo "${m_5}"
         return
     else
-        # cd $PATH_CAKE
-
-        # nohup "${PATH_CAKE}/${PATH_EXEC}" 2>$PATH_ERR &
-
         enable_autostart
 
         sleep 1
@@ -225,11 +273,32 @@ start() {
         check_process $PATH_EXEC
 
         if [ $? -eq 0 ]; then
+            clear   
             port=$(getConfig "START_PORT")
+            https=$(getConfig "ENABLE_WEB_TLS")
+            http_h="http://"
+            http_t="未开启"
+            
+            if [ $https = 0 ];then
+                http_t="当前后台为http协议访问, 请不要使用https访问, 如需使用https, 请运行脚本选择17进行设置。"
+                http_h="http://"
+            else
+                http_t="当前后台为https协议访问, 请不要使用http访问, 如需使用http, 请运行脚本选择17进行设置。"
+                http_h="https://"
+            fi
 
-            echo "|----------------------------------------------------------------|"
-            echo "${m_6}${port}, ${m_7}"
-            echo "${m_8}"
+            echo ""
+            echo ""
+            echo -e "|----------------------------------------------------------------|"
+            echo -e "           ✅程序启动成功, 版本号: ${BOLD}${BLUE}${VERSION}${RESET}          "
+            echo -e ""
+            echo -e "👉️后台访问地址:     ${BOLD}${GREEN}${http_h}$(get_ip):${port}${RESET}"
+            echo -e "👉️默认用户名:       ${BOLD}${GREEN}qzpm19kkx${RESET}"
+            echo -e "👉️默认密码:         ${BOLD}${GREEN}xloqslz913${RESET}"
+            echo -e ""
+            echo -e "⭐️提示: ${BOLD}${BLUE}公网访问管理后台, 请记得打开运营商后台防火墙。${RESET}"
+            echo -e "⭐️提示: ${BOLD}${BLUE}如果您是默认密码及默认端口, 请及时在网页设置中修改账号密码及web访问端口。${RESET}"
+            echo -e "⭐️提示: ${BOLD}${BLUE}${http_t}${RESET}"
             echo "|----------------------------------------------------------------|"
         else
             echo "${m_40}"
@@ -240,7 +309,11 @@ start() {
 resetpass() {
     stop
 
-    rm -rf $PATH_CUE
+    echo "删除配置文件"
+
+    rm -rf $PATH_D_1
+    rm -rf $PATH_D_2
+    rm -rf $PATH_D_3
 
     start
 
@@ -263,6 +336,8 @@ stop() {
     echo "${m_10}"
 
     kill_process $PATH_EXEC
+
+    sleep 1
 }
 
 kill_process() {
@@ -277,13 +352,15 @@ kill_process() {
     kill -TERM "$pid"
   done
   echo "${m_13} $process_name ."
+
+  sleep 1
 }
 
 # 设置开机启动且进程守护
 enable_autostart() {
     echo "${m_14}"
     if [ "$(command -v systemctl)" ]; then
-        sudo tee /etc/systemd/system/$SERVICE_NAME.service > /dev/null <<EOF
+        tee /etc/systemd/system/$SERVICE_NAME.service > /dev/null <<EOF
 [Unit]
 Description=My Program
 After=network.target
@@ -300,12 +377,12 @@ TimeoutStopSec=5
 [Install]
 WantedBy=multi-user.target
 EOF
-        sudo systemctl daemon-reload
-        sudo systemctl enable $SERVICE_NAME.service
-        sudo systemctl start $SERVICE_NAME.service
+        systemctl daemon-reload
+        systemctl enable $SERVICE_NAME.service
+        systemctl start $SERVICE_NAME.service
     else
-        sudo sh -c "echo '${PATH_CAKE}/${PATH_EXEC} &' >> /etc/rc.local"
-        sudo chmod +x /etc/rc.local
+        sh -c "echo '${PATH_CAKE}/${PATH_EXEC} &' >> /etc/rc.local"
+        chmod +x /etc/rc.local
     fi
 }
 
@@ -313,96 +390,20 @@ EOF
 disable_autostart() {
     echo "${m_15}"
     if [ "$(command -v systemctl)" ]; then
-        sudo systemctl stop $SERVICE_NAME.service
-        sudo systemctl disable $SERVICE_NAME.service
-        sudo rm /etc/systemd/system/$SERVICE_NAME.service
-        sudo systemctl daemon-reload
+        systemctl stop $SERVICE_NAME.service
+        systemctl disable $SERVICE_NAME.service
+        rm /etc/systemd/system/$SERVICE_NAME.service
+        systemctl daemon-reload
     else # 系统使用的是SysVinit
-        sudo sed -i '/\/root\/p2pool\/p2pool\ &/d' /etc/rc.local
+        sed -i '/\/root\/p2pool\/p2pool\ &/d' /etc/rc.local
     fi
+
+    sleep 1
 }
 
 
 ISSUE() {
-    echo "0.1.0"
-    echo "0.1.2"
-    echo "0.1.3"
-    echo "0.1.4"
-    echo "0.9.9"
-    echo "0.9.91"
-    echo "0.9.92"
-    echo "0.9.93"
-    echo "0.9.94"
-    echo "0.9.95"
-    echo "0.9.96"
-    echo "0.9.97"
-    echo "0.9.98"
-    echo "0.9.99"
-    echo "0.9.999"
-    echo "1.0.0"
-    echo "1.0.1"
-    echo "1.0.2"
-    echo "1.0.3"
-    echo "1.0.4"
-    echo "2.0.0"
-    echo "2.0.2"
-    echo "2.0.4"
-    echo "2.0.5"
-    echo "2.0.7"
-    echo "2.0.8"
-    echo "2.1.0"
-    echo "3.0.0"
-    echo "3.1.0"
-    echo "3.2.0"
-    echo "3.2.2"
-    echo "3.2.3"
-    echo "3.2.4"
-    echo "3.3.0"
-    echo "3.4.0"
-    echo "3.4.1"
-    echo "3.5.0"
-    echo "3.6.0"
-    echo "3.6.1"
-    echo "3.7.0"
-    echo "3.7.1"
-    echo "3.7.2"
-    echo "3.7.3"
-    echo "3.8.0"
-    echo "3.8.2"
-    echo "3.9.0"
-    echo "3.9.1"
-    echo "3.9.2"
-    echo "3.9.3"
-    echo "3.9.4"
-    echo "3.9.6"
-    echo "3.9.7"
-    echo "3.9.8"
-    echo "3.9.9"
-    echo "3.9.91"
-    echo "3.9.92"
-    echo "3.9.93"
-    echo "3.9.94"
-    echo "4.0.0-beta+0.2"
-    echo "4.0.0"
-    echo "4.1.0"
-    echo "4.1.1"
-    echo "4.1.2"
-    echo "4.1.3"
-    echo "4.1.4"
-	echo "4.1.5"
-	echo "4.2.0"
-	echo "4.3.0"
-	echo "4.3.4"
-	echo "4.4.0"
-	echo "4.4.1"
-	echo "4.4.2"
-	echo "4.4.3"
-    echo "4.4.5"
-	echo "4.4.6"
-    echo "4.4.7"
-    echo "4.4.8"
-	echo "4.4.9"
-    echo "4.5.0"
+    echo "请输入指定的版本号, 例如 3.5.0"
 }
 
 filterResult() {
@@ -434,15 +435,18 @@ setConfig() {
         chmod -R 777 $PATH_CONFIG
 
         echo "START_PORT=63521" >> $PATH_CONFIG
+        echo "ENABLE_WEB_TLS=0" >> $PATH_CONFIG
     fi
 
-    TARGET_VALUE="$1=$2"
-
-    line=$(sed -n '/'$1'/=' ${PATH_CONFIG})
-
-    sed -i "${line} a $TARGET_VALUE" $PATH_CONFIG
-
-    sed  -i  "$line d" $PATH_CONFIG
+    if grep -q "^$1=" "$PATH_CONFIG"; then
+        # 如果key已经存在，则修改它的值
+        sed -i "s/^$1=.*/$1=$2/" "$PATH_CONFIG"
+        echo "已更新配置文件: $PATH_CONFIG"
+    else
+        # 如果key不存在，则添加新的key=value行
+        echo "$1=$2" >> "$PATH_CONFIG"
+        echo "已添加配置到文件: $PATH_CONFIG"
+    fi
 
     echo "$1已修改为$2"
 }
@@ -453,10 +457,10 @@ disable_firewall() {
     echo $prompt_msg_2
 
     if [ "$os_name" == "ubuntu" ]; then
-        sudo ufw disable
+        ufw disable
     elif [ "$os_name" == "centos" ]; then
-        sudo systemctl stop firewalld
-        sudo systemctl disable firewalld
+        systemctl stop firewalld
+        systemctl disable firewalld
     else
         echo $prompt_msg_3
     fi
@@ -468,30 +472,30 @@ change_limit() {
     changeLimit="n"
 
     if [[ -f /etc/debian_version ]]; then
-    echo "soft nofile 65535" | sudo tee -a /etc/security/limits.conf
-    echo "hard nofile 65535" | sudo tee -a /etc/security/limits.conf
-    echo "fs.file-max = 100000" | sudo tee -a /etc/sysctl.conf
-    sudo sysctl -p
+    echo "soft nofile 65535" | tee -a /etc/security/limits.conf
+    echo "hard nofile 65535" | tee -a /etc/security/limits.conf
+    echo "fs.file-max = 100000" | tee -a /etc/sysctl.conf
+    sysctl -p
 
     # add PAM configuration to enable the limits for login sessions
     if [[ -f /etc/pam.d/common-session ]]; then
-        grep -q '^session.*pam_limits.so$' /etc/pam.d/common-session || sudo sh -c "echo 'session required pam_limits.so' >> /etc/pam.d/common-session"
+        grep -q '^session.*pam_limits.so$' /etc/pam.d/common-session || sh -c "echo 'session required pam_limits.so' >> /etc/pam.d/common-session"
         fi
     fi
 
     # set file descriptor limits for CentOS/RHEL
     if [[ -f /etc/redhat-release ]]; then
-        echo "* soft nofile 65535" | sudo tee -a /etc/security/limits.conf
-        echo "* hard nofile 65535" | sudo tee -a /etc/security/limits.conf
-        echo "fs.file-max = 100000" | sudo tee -a /etc/sysctl.conf
-        sudo sysctl -p
+        echo "* soft nofile 65535" | tee -a /etc/security/limits.conf
+        echo "* hard nofile 65535" | tee -a /etc/security/limits.conf
+        echo "fs.file-max = 100000" | tee -a /etc/sysctl.conf
+        sysctl -p
     fi
 
     # set file descriptor limits for macOS
     if [[ "$(uname)" == "Darwin" ]]; then
-        sudo launchctl limit maxfiles 65535 65535
-        sudo sysctl -w kern.maxfiles=100000
-        sudo sysctl -w kern.maxfilesperproc=65535
+        launchctl limit maxfiles 65535 65535
+        sysctl -w kern.maxfiles=100000
+        sysctl -w kern.maxfilesperproc=65535
     fi
 
     # set systemd file descriptor limits
@@ -588,9 +592,11 @@ installapp() {
         setConfig START_PORT $((RANDOM%65535+1))
     fi
 
+    change_limit
+
     echo "${m_31}"
 
-    wget -P $PATH_CAKE "${DOWNLOAD_HOST}/${ORIGIN_EXEC}" -O "${PATH_CAKE}/${PATH_EXEC}" 1>/dev/null
+    wget --show-progress -P $PATH_CAKE "${DOWNLOAD_HOST}/${ORIGIN_EXEC}" -O "${PATH_CAKE}/${PATH_EXEC}" 1>/dev/null
 
     filterResult $? "${m_32}"
 
@@ -646,7 +652,7 @@ install_target() {
 }
 
 
-read -p "$(echo -e "[1-16]：")" choose
+read -p "$(echo -e "[1-17]：")" choose
 
 case $choose in
 1)
@@ -696,6 +702,9 @@ case $choose in
     ;;
 16)
     install_target
+    ;;
+17)
+    set_https_admin
     ;;
 *)
     echo $prompt_error_command
