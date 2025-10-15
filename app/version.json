@@ -1,7 +1,7 @@
 {
-  "version": "V-1.0.1",
+  "version": "V-1.0.2",
   "releaseDate": "2025-10-15T00:00:00.000Z",
-  "downloadUrl": "https://github.com/CakeSystem/p2pool/raw/main/app/p2pool-android-v-1.0.1.apk",
+  "downloadUrl": "https://github.com/CakeSystem/p2pool/raw/main/app/p2pool-android-v-1.0.2.apk",
   "changelog": "- 修复了一些已知问题\n- 优化了性能",
   "mandatory": false,
   "fileSize": "25.8 MB",
