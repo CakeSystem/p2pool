@@ -1,11 +1,11 @@
 {
   "versionCode": 2,
-  "versionName": "1.0.2",
+  "versionName": "1.1.0",
   "releaseDate": "2025-10-15T00:00:00.000Z",
-  "downloadUrl": "https://github.com/CakeSystem/p2pool/raw/main/app/p2pool-android-1.0.2.apk",
+  "downloadUrl": "https://github.com/CakeSystem/p2pool/raw/main/app/p2pool-android-1.1.0.apk",
   "changelog": "- 修复了一些已知问题\n- 优化了性能\n- 提升了稳定性",
   "mandatory": false,
-  "fileSize": "12.5 MB",
+  "fileSize": "3.39 MB",
   "checksum": "sha256:d41d8cd98f00b204e9800998ecf8427e",
   "channel": "stable",
   "minSupportedVersionCode": 1
