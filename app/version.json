@@ -1,6 +1,6 @@
 {
-  "versionCode": 5,
-  "versionName": "1.4.0",
+  "versionCode": 6,
+  "versionName": "1.5.0",
   "releaseDate": "2025-10-15T00:00:00.000Z",
   "downloadUrl": "https://gitee.com/p2pool/p2pool/raw/master/app/p2pool-android-1.2.0.apk",
   "changelog": "- 修复各币种日理论收益获取\n- 优化了矿池算力趋势图表显示\n- 优化矿工列表下拉栏体验",
