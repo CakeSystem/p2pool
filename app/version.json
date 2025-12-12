@@ -2,7 +2,7 @@
   "versionCode": 7,
   "versionName": "1.6.0",
   "releaseDate": "2025-12-08T00:00:00.000Z",
-  "downloadUrl": "https://raw.githubusercontent.com/CakeSystem/p2pool/main/app/p2pool-android-1.1.0.apk",
+  "downloadUrl": "https://raw.githubusercontent.com/CakeSystem/p2pool/main/app/p2pool-android-1.5.0.apk",
   "changelog": "- 优化矿工列表下拉栏体验\n- 优化了矿池算力趋势图表显示\n- 修复各币种日理论收益获取",
   "mandatory": false,
   "fileSize": "3.39 MB",
