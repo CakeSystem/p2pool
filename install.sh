@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="4.5.8"
+VERSION="4.6.0"
 DOWNLOAD_HOST="https://github.com/CakeSystem/p2pool/raw/main/linux"
 ORIGIN_EXEC="p2pool-${VERSION}"
 
