@@ -1,6 +1,6 @@
 {
-  "versionCode": 5,
-  "versionName": "1.5.0",
+  "versionCode": 7,
+  "versionName": "1.7.0",
   "releaseDate": "2025-12-12T00:00:00.000Z",
   "downloadUrl": "https://raw.githubusercontent.com/CakeSystem/p2pool/main/app/p2pool-android-1.5.0.apk",
   "changelog": "- 优化页面加载速度\n- 优化矿池算力趋势图表显示\n- 修复各币种日理论收益获取\n- 修复app更新功能",
