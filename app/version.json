@@ -1,0 +1,12 @@
+{
+  "versionCode": 6,
+  "versionName": "1.6.0",
+  "releaseDate": "2026-01-04T00:00:00.000Z",
+  "downloadUrl": "https://raw.githubusercontent.com/CakeSystem/p2pool/main/app/p2pool-android-1.5.0.apk",
+  "changelog": "- 优化页面加载速度\n- 优化矿池算力趋势图表显示\n- 修复各币种日理论收益获取\n- 修复app更新功能\n- 修复邮箱登录后子账户显示不全问题",
+  "mandatory": false,
+  "fileSize": "3.4 MB",
+  "checksum": "sha256:d41d8cd98f00b204e9800998ecf8427e",
+  "channel": "stable",
+  "minSupportedVersionCode": 1
+}
