@@ -1,222 +1,74 @@
-<div id="top"></div>
+# HashCake
 
-<div align="center">
+**面向矿场与算力运营团队的一体化 Stratum 矿池代理与管理平台。**
 
-# <a href="https://pool.p2pool.xyz"> cakesysteam和p2pool已被污染，请勿使用，如果发生算力下降，请尽快切换至hashcake：</a>
+## HashCake 是什么
 
-# <a href="https://github.com/hashultra/hashcake ">https://github.com/hashultra/hashcake </a>
+HashCake 部署在矿机与上游矿池之间，统一处理矿机接入、矿池连接、费用策略和运行监控。通过浏览器即可集中管理代理端口、矿机与矿池线路，并实时查看算力、份额、延迟、告警和服务器状态。
 
+对于不同地区的矿场，可配合 [CakeBox 客户端](https://github.com/hashultra/cakebox) 建立加密隧道，将矿机安全接入 HashCake，降低跨地域接入与线路维护的复杂度。
 
+## 核心能力
 
+| 能力 | 说明 |
+| --- | --- |
+| 统一接入与管理 | 集中管理代理端口、矿机、矿池线路和 CakeBox 站点，支持配置导入与导出。 |
+| 主备矿池线路 | 支持主备上游矿池、断线重连和异常告警，降低线路波动对运行的影响。 |
+| 费用策略管理 | 可按端口设置费用矿池与分配比例，并持续对比目标比例和实际比例。 |
+| 可视化运营后台 | 实时查看算力、在线与掉线设备、接受与拒绝份额、矿池延迟及服务器资源。 |
+| 异地矿场接入 | 配合 CakeBox 建立加密隧道，统一接入和管理不同地区的矿场。 |
+| 安全与审计 | 支持 HTTPS、账号权限、安全访问路径、黑名单和管理操作审计。 |
+| 可靠安装与升级 | Linux 支持一键安装和下载校验；升级保留原有配置，失败时自动恢复旧版本。 |
 
+## 快速开始
 
-<img src="./image/logo.png" alt="Logo" width="170">
+### Linux
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=F76322&center=true&vCenter=true&width=435&lines=P2POOL)](https://git.io/typing-svg)
+在 Linux amd64 服务器上执行：
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&duration=3000&pause=1000&center=true&vCenter=true&width=435&lines=%E5%9F%BA%E4%BA%8ERUST%E8%AF%AD%E8%A8%80%E6%89%93%E9%80%A0%E5%9C%B0%E8%A1%A8%E6%9C%80%E5%BC%BA%E5%88%86%E5%B8%83%E5%BC%8F%E7%9F%BF%E6%B1%A0%EF%BC%81)](https://git.io/typing-svg)
-
-
-
-<img src="./image/1.png" alt="Logo">
-
-<br>
-<br>
-
-<a href="#dingzhi">
-   <img src="https://img.shields.io/badge/%E7%82%B9%E6%88%91%E5%85%8D%E8%B4%B9%E5%AE%9A%E5%88%B6-%F0%9F%94%A5-8A2BE2">
-</a>
-<a href="#anzhuang">
-   <img src="https://img.shields.io/badge/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B-%F0%9F%91%88-00b9ff">
-</a>
-<a href="#liaotian" target="_blank">
-   <img src="https://img.shields.io/badge/%E5%8A%A0%E5%85%A5%E8%81%8A%E5%A4%A9-%F0%9F%91%88-00b9ff">
-</a>
-<a href="#gengxin" target="_blank">
-   <img src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97-%F0%9F%91%88-00b9ff">
-</a>
-<a href="https://github.com/CakeSystem/RMS" target="_blank">
-   <img src="https://img.shields.io/badge/RMS%E6%9C%AC%E5%9C%B0%E5%AE%A2%E6%88%B7%E7%AB%AF-%F0%9F%91%88-00b9ff">
-</a>
-
-
-
-[![CakeSystem][CakeSystem.io-badge]][CakeSystem.io]
-[![Stargazers][stars-shield]][stars-url]
-
-<!-- <a href="https://github.com/CakeSystem/p2pool">简体中文</a>｜<a href="https://github.com/CakeSystem/p2pool/tree/main/Readme/i18n">English</a> -->
-
-</div>
-
-# P2POOL
-
-<table>
-   <tr>
-   <td>
-
-<span id="anzhuang"></span>
-
-### 👉 **Linux安装**
-
-   <p>&emsp;&emsp;运行以下shell指令以运行工具包</p>
-
-   ```sh
-bash <(curl -s -L https://raw.githubusercontent.com/CakeSystem/p2pool/main/install.sh)
-   ```
-   
-   <p>&emsp;&emsp;成功运行后，您将看到以下菜单, 根据提示安装即可。</p>
-   
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./image/install.gif">
-
-   <p>&emsp;&emsp;默认后台账号密码为 qzpm19kkx xloqslz913</p>
-
-   </td>
-   </tr>
-   <tr>
-   <td>
-
-### 👉 **Windows安装**
-
-   <p>&emsp;&emsp;请直接从此项目的Windows目录下载指定的版本：</p>
-
-   ```sh
-https://github.com/CakeSystem/p2pool/tree/main/windows
-   ```
-
-   <p>&emsp;&emsp;Windows版本直接双击启动即可。</p>
-
-   <p>&emsp;&emsp;默认后台账号密码为 qzpm19kkx xloqslz913</p>
-
-   </td>
-   </tr>   
-   <tr>
-   <td>
-  
-### 👉 **支持的算法及币种**
-
-<p>&emsp;&emsp;对于支持的算法，相应的货币将随时热更新</p>
-
-<div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="./image/icon-btc.png" alt="Logo" width="25">
-<img src="./image/icon-bch.png" alt="Logo" width="25">
-<img src="./image/icon-etc.png" alt="Logo" width="25">
-<img src="./image/icon-ethw.png" alt="Logo" width="25">
-<img src="./image/icon-ethf.png" alt="Logo" width="25">
-<img src="./image/icon-octa.png" alt="Logo" width="25">
-<img src="./image/icon-etc+zil.png" alt="Logo" height="25">
-<img src="./image/icon-ethw+zil.png" alt="Logo" height="25">
-<img src="./image/icon-ethf+zil.png" alt="Logo" height="25">
-<img src="./image/icon-ltc.png" alt="Logo" width="25">
-<img src="./image/icon-kaspa.png" alt="Logo" width="25">
-<img src="./image/icon-kda.png" alt="Logo" width="25">
-<img src="./image/icon-sc.png" alt="Logo" width="25">
-<img src="./image/icon-hns.png" alt="Logo" width="25">
-<img src="./image/icon-cfx.png" alt="Logo" width="25">
-<img src="./image/icon-dnx.png" alt="Logo" width="25">
-<img src="./image/icon-ckb.png" alt="Logo" width="25">
-<img src="./image/icon-zen.png" alt="Logo" width="25">
-<img src="./image/icon-zec.png" alt="Logo" width="25">
-<img src="./image/icon-lbc.png" alt="Logo" width="25">
-<img src="./image/icon-dash.png" alt="Logo" width="25">
-<img src="./image/icon-sero.png" alt="Logo" width="25">
-<img src="./image/icon-alph.png" alt="Logo" width="25">
-<img src="./image/icon-xmr.png" alt="Logo" width="25">
-<img src="./image/icon-zeph.png" alt="Logo" width="25">
-<img src="./image/icon-rvn.png" alt="Logo" height="25">
-<img src="./image/icon-rxd.png" alt="Logo" width="25">
-<img src="./image/icon-erg.png" alt="Logo" width="25">
-</div>
-
-```text
-  算法                支持的币种
-  SHA256              BTC、BCH        
-  ETHASH              ETC、ETHW、ETHF、OCTA、 ETC+ZIL、ETHW+ZIL、ETHF+ZIL、CLORE、NEURAI、NEOXA、ZIL、CLO、UBQ、EGAZ、ELH、AVS、CAU、PAC、PWR、BTN、DUBX、XPB、REDEV2、RTH
-  SCRYPT              LTC
-  KHEAVYHASH          KASPA
-  KARLSENHASH         KLS
-  BLAKE2S             KDA
-  BLAKE2B             SC、HNS
-  OCTOPUS             CFX
-  DYNEXSOLVE          DNX
-  EAGLESONG           CKB
-  EQUIHASH            ZEN、ZEC
-  LBRY                LBC
-  X11                 DASH、BLOCX
-  PROGPOW             SERO
-  BLAKE3              ALPH
-  RANDOMX             XMR、ZEPH、NEVO
-  KAWPOW              RVN、MEWC
-  SHA512256D          RXD
-  AUTOYKOS2           ERG                
-  NEXAPOW             NEXA
-  GHOSTRIDER          RTM、RTC、MECU、MAXE、NIKI、SUBI、NEVO
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/hashultra/hashcake/main/install.sh)
 ```
 
+如果服务器不能使用 `bash <(...)`，也可以分两步：
 
-   </td>
-   </tr>
-   <tr>
-   <td>
+```bash
+curl -fsSL https://raw.githubusercontent.com/hashultra/hashcake/main/install.sh -o install-hashcake.sh
+sudo bash install-hashcake.sh
+```
 
-<span id="liaotian"></span>
+运行要求：Linux amd64、GLIBC 2.31 或更高版本、bash 4 或更高版本、systemd 240 或更高版本、Python 3，并使用 root 权限。一键脚本使用 systemd 管理启停和开机启动；240 是追加日志功能的最低要求，245 可以使用，可选加固项按当前版本启用。缺少依赖时会给出软件包安装提示；二进制不兼容时会保留原始错误。
 
+> [!IMPORTANT]
+> 首次登录令牌有效 10 分钟，只用于创建首个管理员账号；账号创建成功后立即失效，之后使用账号与密码登录。
 
-### 👉 **加入聊天组**
+### 国内服务器
 
-<p>&emsp;&emsp;Telegram：<a href="https://t.me/www_p2pool_xyz">https://t.me/www_p2pool_xyz</a></p>
+无法稳定访问 GitHub 的服务器使用下面的通用管理入口。该命令不绑定当前已安装版本；选择安装或更新时，安装器会自动查找官方最新稳定版，并根据 SHA256SUMS 校验下载文件：
+国内镜像的清单缓存可能滞后：安装器会在解析版本时与 GitHub 清单比对，镜像落后时按更新的版本安装，下载仍优先使用国内镜像。
 
-<!-- <p>&emsp;&emsp;Discord: <a href="https://discord.gg/xpjRnv8wpX">https://discord.gg/xpjRnv8wpX</a></p> -->
+```bash
+HASHCAKE_RELEASE_MIRROR_BASE=https://cdn.jsdmirror.com/gh/hashultra/hashcake@main bash <(curl -fsSL https://cdn.jsdmirror.com/gh/hashultra/hashcake@b249a26199a0eb9a54d5729df4ebfe321d198afd/install.sh)
+```
 
-   </td>
-   </tr>
-   <tr>
-   <td>
+### Windows
 
-### 👉 **特别感谢**
+Windows amd64 程序与 Linux 使用同一正式版本，请从 [Releases 页面](https://github.com/hashultra/hashcake/releases) 下载该版本的 Windows 可执行文件。
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="./image/icon-logo-blue.png" alt="Logo" width="100">
+## 更新 HashCake
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="./image/poolin.svg" alt="Logo" width="100">
+```bash
+sudo bash install-hashcake.sh update
+```
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;感谢以上矿池在一定范围内提供了技术支持😊</p>
+更新会保留已有 Web 端口、安全访问路径、账号、令牌、配置和状态目录。新版本启动失败时，安装器会自动恢复旧二进制、旧服务文件和原有防火墙状态。
 
-   </td>
-   </tr>
-   <tr>
-   <td>
+管理菜单按安装与运行、日志与开机启动、后台与配置、维护工具分组，必要功能直接可见。操作结束返回菜单；回车或 0 返回上一级，主菜单中退出。
 
-### 👉 **服务协议**
+“15. 修改后台账号密码 / 忘记密码”可以在 SSH 侧改密：知道当前密码时直接修改并复验；忘记密码时在同一入口重置，脚本会先备份状态文件再重建 Owner 账号（现有后台账号会被删除）。
 
-   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P2POOL受香港法律监管。请注意，不同国家/地区的法律要求可能会限制此类产品和服务。因此，该产品和服务以及某些功能可能不可用，或者在某些司法管辖区或地区或某些用户中可能受到限制。您应该理解并遵守当地的法律法规。如果您使用此产品，默认代表将接受上述许可证。如果本产品引起的法律问题与本产品无关。</p>
+已手动替换程序的离线服务器，把新版安装脚本传入后，选择菜单“5. 重启服务”即可。脚本会自动补齐必要启动设置并检查本地程序，不会联网下载、重新安装或重置账号。选择“3. 启动服务”时，已运行的服务不会被重复启动。
 
-   </td>
-   </tr>
-   <tr>
-   <td>
+需要切换已发布版本时，选择“17. 安装 / 切换指定版本”，仍执行下载校验与配置预检。手动防火墙及系统连接限制工具分别位于“18. 关闭整机防火墙”和“19. 调整系统连接限制”，执行前显示影响并要求确认。
 
-<span id="gengxin"></span>
-
-
-
-### 👉 **Other issues**
-
-   <p>&emsp;&emsp;这是一个免费软件，不收取任何费用。从技术角度来看，它只需要终端设备计算能力的0.2%作为技术回报。</p>
-
-   </tr>
-   </td>
-
-</table>
-
-
-
-
-[CakeSystem.io]: https://github.com/CakeSystem/p2pool
-[CakeSystem.io-badge]: https://img.shields.io/badge/p2pool-v4.1.2-green?logo=Cake
-[downloads-badge]: https://img.shields.io/github/downloads/ajeetdsouza/zoxide/total?logo=github&logoColor=white&style=flat-square
-[releases]: https://github.com/CakeSystem/p2pool/releases
-[stars-url]: https://github.com/CakeSystem/p2pool/stargazers
-[stars-shield]: https://img.shields.io/github/stars/CakeSystem/p2pool.svg?style=flat
-[stars-url]: https://github.com/CakeSystem/p2pool/stargazers
+需要自动化时可显式使用 `bash install-hashcake.sh update` 等命令；完整命令见 `bash install-hashcake.sh --help`。
